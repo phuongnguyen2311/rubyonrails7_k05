@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  def login; end
+  # def login; end
 
-  def actionLogin
-    user = User.find_by(email: params['email'])
-    if user&.authenticate(params['password'])
-      redirect_to '/users'
-    else
-      flash[:danger] = 'Email or password is incorrect !!!'
-      render '/users/login'
-    end
-  end
+  # def actionLogin
+  #   user = User.find_by(email: params['email'])
+  #   if user&.authenticate(params['password'])
+  #     redirect_to '/users'
+  #   else
+  #     flash[:danger] = 'Email or password is incorrect !!!'
+  #     render '/users/login'
+  #   end
+  # end
 
   # GET /users/new
   def new

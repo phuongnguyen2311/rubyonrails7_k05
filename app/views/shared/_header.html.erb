@@ -3,10 +3,32 @@
         <%= link_to "sample app", "#", id: "logo" %>
         <nav>
             <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to "Home", "#" %></li>
-                <li><%= link_to "Help", "#" %></li>
-                <li><%= link_to "Log in", "#" %></li>
+                <%# <li><%= link_to "Home", "#" %>
+                <%# <li><%= link_to "Help", "#" %>
+                <%# <li><%= link_to "Log in", login_path %>
+                <li><%= link_to t("Home"), static_pages_home_path %></li>
+                <% if logged_in? %>
+                    <li><%= link_to 'users', users_path %></li>
+                    <li class="dropdown">
+                        <%= link_to "#", class: "dropdown-toggle", "data-toggle": "dropdown" do %>
+                            Account
+                            <b class="caret"></b>
+                        <% end %>
+                        <ul class="dropdown-menu">
+                            <li><%= link_to "Profile", current_user %></li>
+                            <li><%= link_to "Settings", '#' %></li>
+                            <li class="divider"></li>
+                            <li> <%= link_to "Log out", logout_path, method: :delete %></li>
+                        </ul>
+                    </li>
+                <% else %>
+                    <li><%= link_to "Log in", login_path %></li>
+                <% end %>
             </ul>
         </nav>
     </div>
+    <%# <div class="mult-language" id="mult-language"> %>
+        <%# <%= link_to image_tag("m.png", size: "45x23"), locales:"en" %> 
+        <%# <%= link_to image_tag("m.png", size: "45x23"), locales:"ja" %> 
+    <%# </div> %>
 </header>
